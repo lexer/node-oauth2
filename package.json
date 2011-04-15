@@ -1,0 +1,17 @@
+{
+  "name": "oauth2",
+  "description": "Oauth2 multi provider npm module",
+  "version": "0.0.1",
+  "author": "Alexey Zakharov <alexey.v.zaharov@gmail.com>",
+  "contributors": [
+    { "name": "Alexey Zakharov", "email": "alexey.v.zaharov@gmail.com" },
+    { "name": "Oksana Utyasheva", "email": "utyasheva.oksana@gmail.com" }
+  ],
+  "dependencies": {
+
+  },
+  "keywords": ["ouath2", "facebook", "google", "vkontakte", "twitter"],
+  "repository": "git://github.com/lexer/node-ouath2",
+  "main": "./lib/oauth2",
+  "engines": { "node": ">= 0.4.6 < 0.5.0" }
+}
