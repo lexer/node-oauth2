@@ -36,13 +36,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index', {
-    title: 'Express'
-  });
-});
-
-app.get('/signin', function(req, res){
-  res.render('signin', {
-    title: 'Sign in'
+    title: 'Node oauth 2'
   });
 });
 
