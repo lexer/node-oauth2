@@ -4,9 +4,9 @@ A simple oauth2 API for node.js .  This API allows users to authenticate against
 
 Tested against
 
-  * ([Facebook](http://developers.facebook.com/docs/authentication/)), 
-  * ([Google](http://code.google.com/apis/accounts/docs/OAuth2.html)), 
-  * ([Vkontakte](http://vkontakte.ru/topic-1_24428376)).
+  * [Facebook](http://developers.facebook.com/docs/authentication/), 
+  * [Google](http://code.google.com/apis/accounts/docs/OAuth2.html), 
+  * [Vkontakte](http://vkontakte.ru/topic-1_24428376).
 
 Contributors
 ============
