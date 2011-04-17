@@ -1,4 +1,4 @@
-## node-oauth2 - OAuth2 wrapper for nodejs
+# node-oauth2 - OAuth2 wrapper for nodejs
 
 A simple oauth2 API for node.js .  This API allows users to authenticate against OAuth2 providers, and thus act as OAuth2 consumers
 
