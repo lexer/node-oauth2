@@ -8,6 +8,10 @@ Tested against
   * [Google](http://code.google.com/apis/accounts/docs/OAuth2.html), 
   * [Vkontakte](http://vkontakte.ru/topic-1_24428376).
 
+## Installation
+
+    $ npm install oauth2
+
 Contributors
 ============
 
