@@ -11,3 +11,4 @@ pids
 logs
 results
 secrets.json
+node_modules

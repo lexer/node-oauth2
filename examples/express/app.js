@@ -65,6 +65,16 @@ app.get('/auth/google', function(req, res){
     '&scope=https://www.google.com/m8/feeds/&response_type=code');
 });
 
+app.get('/auth/vkontakte', function(req,res){
+  var client_id = oauthSecrets.vkontakte.clientId;
+  var provider = 'vkontakte';
+  var redirect_uri = 'http://127.0.0.1:3000' +req.url + '/callback';
+  
+  res.redirect(
+    'http://api.vkontakte.ru/oauth/authorize?client_id=' + client_id + '&redirect_uri=' + redirect_uri + 
+    '&scope=notify,friends/&response_type=code');  
+});
+
 app.get('/auth/:provider/callback', function(req, res){
   /*var oauth2 = new OAuth2({
       base: "graph.facebook.com",
@@ -81,7 +91,7 @@ app.get('/auth/:provider/callback', function(req, res){
   });*/
   
   
-  var oauth2 = new OAuth2({
+  /*var oauth2 = new OAuth2({
       base: "accounts.google.com",
       tokenUrl: "/o/oauth2/token",
       redirectUri: 'http://' + req.headers.host + req.url + '/callback',
@@ -93,7 +103,22 @@ app.get('/auth/:provider/callback', function(req, res){
       status: status,
       result: result
     });
-  });  
+  }); */
+
+  var oauth2 = new OAuth2({
+        base: "api.vkontakte.ru",
+        tokenUrl: "/oauth/access_token",
+        redirectUri: 'http://' + req.headers.host + req.url + '/callback',
+        id: oauthSecrets.vkontakte.clientId,
+        secret: oauthSecrets.vkontakte.clientSecret
+      });
+
+    oauth2.accessToken(req.query.code, {}, function(status, result) {
+      res.send({
+        status: status,
+        result: result
+      });
+    });  
 });
 
 /*https://accounts.google.com/o/oauth2/auth?
