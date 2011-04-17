@@ -12,4 +12,4 @@ Contributors
 ============
 
   * Alexey Zakharov ([lexer](http://github.com/lexer))
-  * Utyasheva Oksanap ([uoksana](http://github.com/uoksana))
+  * Utyasheva Oksana ([uoksana](http://github.com/uoksana))
