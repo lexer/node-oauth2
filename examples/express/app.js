@@ -41,6 +41,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/auth/facebook', function(req, res){
+  console.dir(req);
   var client_id = oauthSecrets.facebook.clientId;
   var provider = 'facebook';
   var redirect_uri = 'http://localhost:3000/auth/facebook/callback';
@@ -78,12 +79,12 @@ app.get('/auth/:provider/callback', function(req, res){
         id: oauthSecrets.facebook.clientId,
         secret: oauthSecrets.facebook.clientSecret
       });
-    oauth2.accessToken(req.query.code, {}, function(status, result) {
+    oauth2.accessToken(req.query.code, function(error, result) {
       res.send({
-        status: status,
+        error: error,
         result: result
       });
-    }); 
+    });
   }
   
   if (req.params.provider === "google") {
@@ -94,12 +95,12 @@ app.get('/auth/:provider/callback', function(req, res){
         id: oauthSecrets.google.clientId,
         secret: oauthSecrets.google.clientSecret
       });
-    oauth2.accessToken(req.query.code, {}, function(status, result) {
+    oauth2.accessToken(req.query.code, function(error, result) {
       res.send({
-        status: status,
+        error: error,
         result: result
       });
-    }); 
+    });
   }
 
   if (req.params.provider === "vkontakte") {
@@ -111,12 +112,12 @@ app.get('/auth/:provider/callback', function(req, res){
           secret: oauthSecrets.vkontakte.clientSecret
         });
 
-      oauth2.accessToken(req.query.code, {}, function(status, result) {
-        res.send({
-          status: status,
-          result: result
-        });
-      });  
+    oauth2.accessToken(req.query.code, function(error, result) {
+      res.send({
+        error: error,
+        result: result
+      });
+    });  
   }
 });
 
