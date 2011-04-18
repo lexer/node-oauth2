@@ -41,7 +41,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/auth/facebook', function(req, res){
-  console.dir(req);
+
   var client_id = oauthSecrets.facebook.clientId;
   var provider = 'facebook';
   var redirect_uri = 'http://localhost:3000/auth/facebook/callback';
@@ -73,50 +73,46 @@ app.get('/auth/vkontakte', function(req,res){
 app.get('/auth/:provider/callback', function(req, res){
   if (req.params.provider === "facebook") {
     var oauth2 = new OAuth2({
-        base: "graph.facebook.com",
-        tokenUrl: "/oauth/access_token",
-        redirectUri: 'http://localhost:3000/auth/facebook/callback',
-        id: oauthSecrets.facebook.clientId,
-        secret: oauthSecrets.facebook.clientSecret
+        host: "graph.facebook.com",
+        accessTokenPath: "/oauth/access_token",
+        clientId: oauthSecrets.facebook.clientId,
+        clientSecret: oauthSecrets.facebook.clientSecret
       });
-    oauth2.accessToken(req.query.code, function(error, result) {
-      res.send({
-        error: error,
-        result: result
-      });
-    });
+
+    oauth2.getAccessToken(req.query.code,'http://localhost:3000/auth/facebook/callback', function(error, result) {
+      console.log(result);
+      res.send("Success");
+    });  
   }
   
   if (req.params.provider === "google") {
     var oauth2 = new OAuth2({
-        base: "accounts.google.com",
-        tokenUrl: "/o/oauth2/token",
-        redirectUri: 'http://127.0.0.1:3000/auth/google/callback',
-        id: oauthSecrets.google.clientId,
-        secret: oauthSecrets.google.clientSecret
+        host: "accounts.google.com",
+        accessTokenPath: "/o/oauth2/token",
+        clientId: oauthSecrets.google.clientId,
+        clientSecret: oauthSecrets.google.clientSecret
       });
-    oauth2.accessToken(req.query.code, function(error, result) {
-      res.send({
+    oauth2.getAccessToken(req.query.code, 'http://127.0.0.1:3000/auth/google/callback', function(error, result) {
+      res.send(JSON.stringify({
         error: error,
         result: result
-      });
+      }));
     });
   }
 
   if (req.params.provider === "vkontakte") {
     var oauth2 = new OAuth2({
-          base: "api.vkontakte.ru",
-          tokenUrl: "/oauth/access_token",
-          redirectUri: 'http://127.0.0.1:3000/auth/vkontakte/callback',
-          id: oauthSecrets.vkontakte.clientId,
-          secret: oauthSecrets.vkontakte.clientSecret
+          host: "api.vkontakte.ru",
+          accessTokenPath: "/oauth/access_token",
+          clientId: oauthSecrets.vkontakte.clientId,
+          clientSecret: oauthSecrets.vkontakte.clientSecret
         });
 
-    oauth2.accessToken(req.query.code, function(error, result) {
-      res.send({
+    oauth2.getAccessToken(req.query.code,'http://127.0.0.1:3000/auth/vkontakte/callback', function(error, result) {
+      res.send(JSON.stringify({
         error: error,
         result: result
-      });
+      }));
     });  
   }
 });
