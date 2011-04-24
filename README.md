@@ -1,3 +1,5 @@
+# I've stopped development for a moment. Since I want to rewrite this lib using SuperAgent node module, that is currently under development.
+
 # OAuth2 wrapper for nodejs
 
 A simple oauth2 API for node.js .  This API allows users to authenticate against OAuth2 providers, and thus act as OAuth2 consumers
