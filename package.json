@@ -11,7 +11,7 @@
 
   },
   "keywords": ["ouath2", "facebook", "google", "vkontakte", "twitter"],
-  "repository": "git://github.com/lexer/node-ouath2",
+  "repository": "git://github.com/lexer/node-oauth2",
   "main": "./lib/oauth2",
   "engines": { "node": ">= 0.4.6 < 0.5.0" }
 }
